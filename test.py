@@ -1,4 +1,5 @@
 import praw
+import os
 
 reddit = praw.Reddit(client_id='yvtEWUUqvd0tYQ',
                      client_secret='JVrzr8bzhejekYdCkyqhg9SijTU',
@@ -6,6 +7,7 @@ reddit = praw.Reddit(client_id='yvtEWUUqvd0tYQ',
 
 from praw.models import MoreComments
 
+#enc = 'utf-8'
 
 #f = open('subredditlist.txt', 'r')
 
@@ -16,12 +18,13 @@ subreddit = reddit.subreddit('leagueoflegends')
 x = 0
 
 #run a loop through the top 10 posts
-for submission in subreddit.top(limit=10):
+for submission in subreddit.top(limit=1):
 
 	num = str(x) 
-	name = 'leagueoflegends' + '-' + num + '.txt'
+	name = "leagueoflegends" + "-" + num + ".txt"
+	filepath = os.path.join("D:\\output",name)
 
-	out = open(name, 'w')
+	out = open(filepath, mode='w', encoding='utf-8')
 	out.write(' ')
 
 	#grab the title of the post
