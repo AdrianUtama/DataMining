@@ -6,16 +6,20 @@ reddit = praw.Reddit(client_id='yvtEWUUqvd0tYQ',
 
 from praw.models import MoreComments
 
-#run a loop through top 500 subreddits
-for each string s in list of subreddits
 
+f = open('subredditlist.txt', 'r')
 
-	subreddit = reddit.subreddit(s)
+for line in f
+
+	subreddit = reddit.subreddit(line)
 
 
 	#run a loop through the top 10 posts
 	for submission in subreddit.top(limit = 65)
 
+		name = line + '-' + submission.title + '.txt'
+
+		out = open(name, 'w')
 
 		#grab the title of the post
 		#grab the ID of the post
@@ -32,7 +36,11 @@ for each string s in list of subreddits
     		#save the comment to a text so we can output it to wherever we decide
     		text = comment.body
 
-
     		#we now have the body just need to save it somewhere
+    		out.write(text)
+    		out.print('')
+    		
+
+#should be end of program
 
 
